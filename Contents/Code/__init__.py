@@ -647,6 +647,12 @@ class XBMCNFO(PlexAgent):
                     metadata.genres.discard('')
                 except:
                     pass
+                try:
+                    genres = nfo_xml.xpath('tag')
+                    [metadata.genres.add(g.strip()) for genreXML in genres for g in genreXML.text.split('/')]
+                    metadata.genres.discard('')
+                except:
+                    pass
                 # Countries
                 try:
                     countries = nfo_xml.xpath('country')
